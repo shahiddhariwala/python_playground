@@ -8,19 +8,15 @@ name2 = input("What is their name? \n")
 
 true_letters = list("true")
 love_letters = list("love")
+combined_names = str.lower(name1 + name2)
 true_count = 0
 love_count = 0
-for letter in name1:
-    if str.lower(letter) in true_letters:
-        true_count += 1
-    if str.lower(letter) in love_letters:
-        love_count += 1
+for letter in true_letters:
+    true_count += combined_names.count(letter)
 
-for letter in name2:
-    if str.lower(letter) in true_letters:
-        true_count += 1
-    if str.lower(letter) in love_letters:
-        love_count += 1
+for letter in love_letters:
+    love_count += combined_names.count(letter)
+
 
 score = int(str(true_count)+str(love_count))
 if score < 10 or score > 80:
