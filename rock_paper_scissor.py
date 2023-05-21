@@ -33,6 +33,27 @@ Scissor wins against paper
 Paper wins against Rock
 """
 
+winner_art = '''
+-------------------You won-------------------------
+   _                             .-.
+  / )  .-.    ___          __   (   )
+ ( (  (   ) .'___)        (__'-._) (
+  \ '._) (,'.'               '.     '-.
+   '.      /  "\               '    -. '.
+     )    /   \ \   .-.   ,'.   )  (  ',_)    _
+   .'    (     \ \ (   \ . .' .'    )    .-. ( \\
+  (  .''. '.    \ \|  .' .' ,',--, /    (   ) ) )
+   \ \   ', :    \    .-'  ( (  ( (     _) (,' /
+    \ \   : :    )  / _     ' .  \ \  ,'      /
+  ,' ,'   : ;   /  /,' '.   /.'  / / ( (\    (
+  '.'      "   (    .-'. \       ''   \_)\    \\
+                \  |    \ \__             )    )
+              ___\ |     \___;           /  , /
+             /  ___)                    (  ( (
+             '.'                         ) ;) ;
+                                        (_/(_/
+----------------------------------------------------
+'''
 
 choices = ["rock", "paper", "scissors"]
 choices_art = {
@@ -77,7 +98,7 @@ try:
 
     winner = check_who_won(user_choice, computer_choice)
     if winner == "user":
-        print("You won")
+        print(winner_art)
     elif winner == "computer":
         print("You lost")
     else:
