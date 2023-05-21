@@ -41,7 +41,7 @@ choices_art = {
     "scissors": scissors
 }
 user_choice = choices[int(
-    input("What do you choose ? Type 0 for Rock, 1 for Paper or 2 for Scissors\n"))]
+    input("What do you choose ? Type 0 for Rock, 1 for Paper or 2 for Scissors\n")) % 3]
 
 
 def generate_computer_choice():
@@ -75,7 +75,7 @@ def check_who_won(user_c, computer_c):
 
 print(choices_art[user_choice])
 
-print(f"Computer Choose\n{choices_art[computer_choice]}")
+print(f"Computer Choose:\n{choices_art[computer_choice]}")
 
 winner = check_who_won(user_choice, computer_choice)
 if winner == "user":
