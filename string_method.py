@@ -20,8 +20,8 @@
 
 # endswith()
 # Returns True if a string ends with a specified substring.
-"hello world".endswith("d")
-False
+print("hello world".endswith("d"))
+True
 
 # expandtabs()
 # Converts tabs in a string to spaces.
