@@ -125,13 +125,13 @@ while error_count <= MAX_ALLOWED_ERROR and placeholder_string != random_word:
     guess_letter = input("Guess a letter: ").lower()
     if check_if_letter_exist(guess_letter):
         generate_placeholder_string(guess_letter)
-        print(f"Current string is {placeholder_string}")
+        print(f"You guessed it right, {placeholder_string}")
     else:
         error_count += 1
-        print(f"Current string is {placeholder_string}")
+        print(f"{placeholder_string}")
         print(hangman_step_art[str(error_count)])
 
 if placeholder_string == random_word:
-    print(f"Word is: {random_word}: You win")
+    print(f"\n\nWord is: {random_word}: You win")
 else:
-    print(f"Word is: {random_word}: You lose")
+    print(f"\n\nWord is: {random_word}: You lose")
