@@ -17,12 +17,12 @@ travel_log = [
 
 
 def add_new_country(country, num_of_visit, city_list):
-    global travel_log
     new_log = {
         "country": country,
         "visits": num_of_visit,
-        "cities": city_list,
+
     }
+    new_log["cities"] = city_list
     travel_log.append(new_log)
 
 
