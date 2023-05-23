@@ -105,6 +105,8 @@ def calculator():
 
 
 try:
+    import os
+    os.system("clear")
     calculator()
 except ValueError:
     print("Please check your inputs should be either int or float")
