@@ -1,3 +1,4 @@
+import os
 auction_bid_art = '''
                 __
                (_()  \\
@@ -20,9 +21,12 @@ while continue_bidding:
     name = input("What is your name?\n")
     bid = int(input("What is your bid $"))
     auction_ledger[name] = bid
-    if input(
-            "Are there any other bidders, type 'Yes' or 'No'\n").lower() == "no":
+    if "no" in input(
+            "Are there any other bidders, type 'Yes' or 'No'\n").lower().strip():
         continue_bidding = False
+    else:
+        os.system("clear")
+
 winner = ""
 winning_bid = 0
 for bidder in auction_ledger:
