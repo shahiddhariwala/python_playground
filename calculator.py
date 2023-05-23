@@ -96,8 +96,7 @@ def calculator():
         calculation_function = operations[operation]
         answer = calculation_function(num1, num2)
         print(f"{num1} {symbol} {num2} = {answer}")
-
-        if input(f"Do you want to continue to perform operation on {answer}, type 'Y' to continue or type 'N' to start new calculation\n").lower() == "y":
+        if input(f"Do you want to continue to perform operation on {round(answer, 3)}, type 'Y' to continue or type 'N' to start new calculation\n").lower() == "y":
             num1 = answer
         else:
             should_continue = False
