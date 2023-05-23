@@ -17,6 +17,35 @@
 # Cards are not removed from the deck as they are drawn.
 # The computer is the dealer.
 
+import random
+art = """
+.------.            _     _            _    _            _    
+|A_  _ |.          | |   | |          | |  (_)          | |   
+|( \\/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+| \\  /|K /\\  |     | '_ \\| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+|  \\/ | /  \\ |     | |_) | | (_| | (__|   <| | (_| | (__|   < 
+`-----| \\  / |     |_.__/|_|\\__,_|\\___|_|\\_\\ |\__,_|\\___|_|\\_\\
+      |  \\/ K|                            _/ |                
+      `------'                           |__/           
+
+"""
+play = input(
+    "Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
+user_cards = []
+computer_cards = []
+
+if play == "y":
+    print(art)
+    user_cards.append(random.choice(cards))
+    user_cards.append(random.choice(cards))
+    computer_cards.append(random.choice(cards))
+    print(f"Your cards: {user_cards}, current score: {sum(user_cards)}")
+    print(f"Computer's first card: {computer_cards[0]}")
+    continue_bidding = input(
+        "Type 'y' to get another card, type 'n' to pass: ").lower()
 
 ##################### Hints #####################
 
