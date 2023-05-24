@@ -7,26 +7,34 @@ art = """
 \____/ \__,_|\___||___/___/  \/   |_| |_|\___| \_\ \/  \__,_|_| |_| |_|_.__/ \___|_| 
 """
 
-number_of_attempts = 5
+
+MAX_NUMBER_OF_EASY_ATTEMPTS = 10
+MAX_NUMBER_OF_HARD_ATTEMPTS = 5
+number_of_attempts = MAX_NUMBER_OF_HARD_ATTEMPTS
 user_guess_value = 0
+
+
+def get_difficulty_level():
+    return input(
+        "Choose a difficulty. Type 'easy' or 'hard': ").lower()
 
 
 def start_game():
     global number_of_attempts, user_guess_value
     os.system("clear")
+    print(art)
     print(
         f"Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.\nPssst, the correct answer is {random.randint(1,100)}")
-    difficulty_level = input(
-        "Choose a difficulty. Type 'easy' or 'hard': ").lower()
     target_value = random.randint(1, 100)
 
-    user_guess_value = 0
-    if difficulty_level == "easy":
-        number_of_attempts = 10
-        # You have 5 attempts remaining to guess the number.
-        # Make a guess: 33
+    if get_difficulty_level() == "easy":
+        number_of_attempts = MAX_NUMBER_OF_EASY_ATTEMPTS
 
-    def check_winner():
+    def check_if_game_over():
+        """
+        Checks if game is over or to continue the game
+        Declare winner if correct choice is given by user
+        """
         is_game_over = True
         if user_guess_value == target_value:
             print("You guessed it right! 😎")
@@ -38,12 +46,15 @@ def start_game():
         return is_game_over
 
     def start_guessing():
+        '''
+        Actual logic is written here to get user input
+        '''
         global number_of_attempts, user_guess_value
         print(
             f"You have {number_of_attempts} attempts remaining to guess the number.")
         number_of_attempts -= 1
         user_guess_value = int(input("Make a guess: "))
-        if not check_winner():
+        if not check_if_game_over():
             if user_guess_value > target_value:
                 print("Too High.\nGuess again")
             else:
