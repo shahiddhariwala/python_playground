@@ -17,6 +17,7 @@
 # Cards are not removed from the deck as they are drawn.
 # The computer is the dealer.
 
+import os
 import random
 art = """
 .------.            _     _            _    _            _    
@@ -29,24 +30,79 @@ art = """
       `------'                           |__/           
 
 """
-play = input(
-    "Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+continue_playing = True
 
-user_cards = []
-computer_cards = []
 
-if play == "y":
-    print(art)
-    user_cards.append(random.choice(cards))
-    user_cards.append(random.choice(cards))
-    computer_cards.append(random.choice(cards))
+def print_final_hands(user_cards, computer_cards):
+    print(f"Your final hand:  {user_cards}, final score: {sum(user_cards)}")
+    print(
+        f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+
+
+def print_current_hands(user_cards, computer_cards):
     print(f"Your cards: {user_cards}, current score: {sum(user_cards)}")
     print(f"Computer's first card: {computer_cards[0]}")
+
+
+def get_dealer_card(user_cards, computer_cards):
+    print_current_hands(user_cards, computer_cards)
     continue_bidding = input(
         "Type 'y' to get another card, type 'n' to pass: ").lower()
+    if continue_bidding == "y":
+        user_cards.append(random.choice(cards))
+        is_ace_present = False
+        sum_of_user_cards = sum(user_cards)
+        try:
+            if user_cards.index(11):
+                is_ace_present = True
+        except ValueError:
+            is_ace_present = False
+        if sum_of_user_cards == 21:
+            print_final_hands(user_cards, computer_cards)
+            print("You won 😎")
+            return
+        if is_ace_present:
+            sum_of_user_cards -= 10
+        if sum_of_user_cards < 21:
+            get_dealer_card(user_cards, computer_cards)
+        else:
+            print_final_hands(user_cards, computer_cards)
+            print("You lose😭")
+            return
+    else:
+        while sum(computer_cards) <= 17:
+            computer_cards.append(random.choice(cards))
+        print_final_hands(user_cards, computer_cards)
+        if sum(computer_cards) >= sum(user_cards) and sum(computer_cards) <= 21:
+            print("You lose😭")
+        else:
+            print("You won 😎")
+    return
 
+
+def start_blackjack():
+
+    user_cards = []
+    computer_cards = []
+    play = input(
+        "Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+    if play == "y":
+        os.system("clear")
+        print(art)
+        user_cards.append(random.choice(cards))
+        user_cards.append(random.choice(cards))
+        computer_cards.append(random.choice(cards))
+        computer_cards.append(random.choice(cards))
+        get_dealer_card(user_cards, computer_cards)
+    else:
+        continue_playing = False
+
+
+while continue_playing:
+    start_blackjack()
 ##################### Hints #####################
 
 # Hint 1: Go to this website and try out the Blackjack game:
