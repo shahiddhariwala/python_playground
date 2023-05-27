@@ -10,7 +10,7 @@ colors = ["red", "yellow", "purple", "green", "violet", "orange", "pink", "wheat
 def draw_polygon(num_sides):
     inny.color(r.choice(colors))
     angle = 360 / side
-    for _ in range(side):
+    for _ in range(num_sides):
         inny.forward(100)
         inny.right(angle)
 
