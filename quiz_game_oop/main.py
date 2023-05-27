@@ -1,8 +1,8 @@
 from question_model import Question
-from data import question_data
+from data import question_data, get_random_question_data
 from quiz_brain import QuizBrain
 question_bank = []
-for question in question_data:
+for question in get_random_question_data():
     question_obj = Question(q_text=question["text"], answer=question["answer"])
     question_bank.append(question_obj)
 

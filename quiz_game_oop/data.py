@@ -1,3 +1,4 @@
+from requests import get
 question_data = [
     {"text": "A slug's blood is green.", "answer": "True"},
     {"text": "The loudest animal is the African Elephant.", "answer": "False"},
@@ -14,3 +15,22 @@ question_data = [
     {"text": "No piece of square dry paper can be folded in half more than 7 times.", "answer": "False"},
     {"text": "A few ounces of chocolate can to kill a small dog.", "answer": "True"}
 ]
+
+
+def get_random_question_data():
+    data = []
+    try:
+        url = "https://opentdb.com/api.php?amount=11&category=18&type=boolean"
+        resp = get(url)
+        resp = resp.json()
+        resp = resp["results"]
+        for q in resp:
+            data.append({"text": q["question"], "answer": q["correct_answer"]})
+    except:
+        print("Something went wrong")
+
+    return data
+
+
+if __name__ == "__main__":
+    print(get_random_question_data())
