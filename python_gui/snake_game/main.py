@@ -1,15 +1,17 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 import time
 from snake import Snake
+from food import Food
 
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.title("🐍 Snake game 🐍")
 screen.bgcolor("black")
 
-# below code stops update on screen, with this turned of we have to manually update screen
+# below code stops update on screen, with this turned off we have to manually update screen
 screen.tracer(0)
 snake = Snake()
+food = Food()
 screen.update()
 
 screen.listen()
@@ -34,5 +36,8 @@ while not is_game_over():
     time.sleep(.1)
     screen.update()
     snake.move()
+    if snake.head.distance(food) < 15:
+        print("glup glup")
+        food.refresh()
 
 screen.exitonclick()
