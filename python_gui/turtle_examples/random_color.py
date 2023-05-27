@@ -550,5 +550,14 @@ def get_random_color():
     return r.choice(colors)
 
 
+def get_random_rgb_color():
+    red = r.randint(0, 255)
+    green = r.randint(0, 255)
+    blue = r.randint(0, 255)
+
+    return (red, green, blue)
+
+
 if __name__ == "__main__":
     print(get_random_color())
+    print(get_random_rgb_color())
