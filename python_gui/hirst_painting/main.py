@@ -19,6 +19,7 @@ screen.title("Hirst Painting!")
 x_cord = 0
 y_cord = 0
 inny.penup()
+inny.hideturtle()
 num_of_dot_per_side = 6
 inny.setpos(x_cord, y_cord)
 
@@ -36,4 +37,3 @@ for num in range(1, (num_of_dot_per_side ** 2) + 1):
     inny.setpos(x_cord, y_cord)
 
 screen.exitonclick()
-print(rgb_colors)
