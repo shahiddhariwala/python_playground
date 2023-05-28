@@ -3,27 +3,33 @@ from paddle import Paddle
 from ball import Ball
 from score_board import ScoreBoard
 import time
+
+# Entities
 screen = Screen()
 screen.title("Ping Pong Game!")
 screen.bgcolor("black")
 screen.setup(width=800, height=600)
 screen.tracer(0)
 
-is_game_on = True
 player_l = Paddle((-350, 0))
 player_r = Paddle((350, 0))
 ball = Ball()
 scoreboard = ScoreBoard()
 
+# Variables
+is_game_on = True
+
+# Methods
 screen.listen()
 screen.onkey(player_r.go_up, "Up")
 screen.onkey(player_r.go_down, "Down")
 screen.onkey(player_l.go_up, "w")
 screen.onkey(player_l.go_down, "s")
 
+# Game core
 while is_game_on:
 
-    time.sleep(.1)
+    time.sleep(ball.move_speed)
 
     ball.move()
     screen.update()
