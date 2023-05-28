@@ -2,6 +2,7 @@ from turtle import Screen
 import time
 from snake import Snake
 from food import Food
+from score_board import ScoreBoard
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -12,6 +13,7 @@ screen.bgcolor("black")
 screen.tracer(0)
 snake = Snake()
 food = Food()
+score = ScoreBoard()
 screen.update()
 
 screen.listen()
@@ -26,7 +28,7 @@ is_game_on = True
 
 def is_game_over():
     snake_head = snake.head
-    if snake_head.xcor() >= 300 or snake_head.ycor() >= 300:
+    if snake_head.xcor() >= 290 or snake_head.ycor() >= 290:
         print("Game over")
         return True
     return False
@@ -37,7 +39,7 @@ while not is_game_over():
     screen.update()
     snake.move()
     if snake.head.distance(food) < 15:
-        print("glup glup")
+        score.update_score()
         food.refresh()
 
 screen.exitonclick()
