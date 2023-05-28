@@ -28,9 +28,9 @@ is_game_on = True
 
 def is_game_over():
     snake_head = snake.head
-    if snake_head.xcor() >= 290 or snake_head.ycor() >= 290:
+    if snake_head.xcor() >= 285 or snake_head.ycor() >= 285 or snake_head.xcor() <= -285 or snake_head.ycor() <= -285:
         score.display_game_over()
-        print("Game over")
+        print("Game over!")
         return True
     return False
 

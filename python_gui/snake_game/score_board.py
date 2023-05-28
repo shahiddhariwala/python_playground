@@ -25,4 +25,5 @@ class ScoreBoard(Turtle):
         self.write_to_board(text=score_string)
 
     def display_game_over(self):
-        self.write_to_board("Game over!")
+        self.goto(0, 0)
+        self.write_to_board(f"Game over!\nYour score is {self.score}")
