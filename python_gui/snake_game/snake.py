@@ -56,3 +56,8 @@ class Snake:
     def left(self):
         if self.head.heading() != DIRECTIONS["right"]:
             self.head.setheading(DIRECTIONS["left"])
+
+    def eat_food(self):
+        new_part = get_part()
+        new_part.goto(self.snake_body[-1].position())
+        self.snake_body.append(new_part)

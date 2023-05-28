@@ -41,6 +41,7 @@ while not is_game_over():
     snake.move()
     if snake.head.distance(food) < 15:
         score.increase_score()
+        snake.eat_food()
         food.refresh()
 
 screen.exitonclick()
