@@ -28,11 +28,20 @@ is_game_on = True
 
 def is_game_over():
     snake_head = snake.head
+    is_over = False
     if snake_head.xcor() >= 285 or snake_head.ycor() >= 285 or snake_head.xcor() <= -285 or snake_head.ycor() <= -285:
+        is_over = True
+
+    # Collided with itself
+    for part in snake.snake_body[1:]:
+        if snake_head.distance(part) < 10:
+            is_over = True
+            break
+
+    if is_over:
         score.display_game_over()
         print("Game over!")
-        return True
-    return False
+    return is_over
 
 
 while not is_game_over():
