@@ -1,10 +1,19 @@
 import pandas
 
 data = pandas.read_csv("weather_data.csv")
+
+# Converts to dictionary
+data_dict = data.to_dict()
+print(data_dict)
+
+# Converts to list from series
+temperatures = data["Temperature"].tolist()
+print(temperatures)
+print(f"Average temperature is {sum(temperatures) / len(temperatures)}'C")
+"""
+
 print(data)
 print(data["Temperature"])
-
-"""
 Beautifully printed by pandas
          Day  Temperature      Condition
 0     Monday           25          Sunny
