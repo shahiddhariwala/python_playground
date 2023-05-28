@@ -42,17 +42,17 @@ class Snake:
         return self.head
 
     def up(self):
-        if self.head.heading != DIRECTIONS["down"]:
+        if self.head.heading() != DIRECTIONS["down"]:
             self.head.setheading(DIRECTIONS["up"])
 
     def right(self):
-        if self.head.heading != DIRECTIONS["left"]:
+        if self.head.heading() != DIRECTIONS["left"]:
             self.head.setheading(DIRECTIONS["right"])
 
     def down(self):
-        if self.head.heading != DIRECTIONS["up"]:
+        if self.head.heading() != DIRECTIONS["up"]:
             self.head.setheading(DIRECTIONS["down"])
 
     def left(self):
-        if self.head.heading != DIRECTIONS["right"]:
+        if self.head.heading() != DIRECTIONS["right"]:
             self.head.setheading(DIRECTIONS["left"])
