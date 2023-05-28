@@ -1,5 +1,6 @@
 from turtle import Screen
 from paddle import Paddle
+from ball import Ball
 
 screen = Screen()
 screen.title("Ping Pong Game!")
@@ -9,6 +10,8 @@ screen.tracer(0)
 
 player_l = Paddle((-350, 0))
 player_r = Paddle((350, 0))
+ball = Ball()
+
 screen.update()
 screen.listen()
 screen.onkey(player_r.go_up, "Up")
