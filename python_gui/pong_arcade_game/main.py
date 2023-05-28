@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from score_board import ScoreBoard
 import time
 screen = Screen()
 screen.title("Ping Pong Game!")
@@ -12,6 +13,7 @@ is_game_on = True
 player_l = Paddle((-350, 0))
 player_r = Paddle((350, 0))
 ball = Ball()
+scoreboard = ScoreBoard()
 
 screen.listen()
 screen.onkey(player_r.go_up, "Up")
@@ -32,11 +34,16 @@ while is_game_on:
         ball.bounce_y()
 
     # Collision with paddles
-    if ball.distance(player_r) <= 50 and ball.xcor() >= 330 or ball.distance(player_l) <= 50 and ball.xcor() <= -330:
+    if ball.distance(player_r) <= 50 and ball.xcor() >= 320 or ball.distance(player_l) <= 50 and ball.xcor() <= -320:
         ball.bounce_x()
 
     # Detect misses
-    if ball.xcor() >= 380 or ball.xcor() <= -380:
-        ball.reset_ball()
+    if ball.xcor() > 380:
+        ball.reset_position()
+        scoreboard.l_point()
+
+    if ball.xcor() < -380:
+        ball.reset_position()
+        scoreboard.r_point()
 
 screen.exitonclick()
