@@ -9,14 +9,20 @@ class ScoreBoard(Turtle):
         self.color("white")
         self.hideturtle()
         self.penup()
-        self.goto(-20, 280)
+        self.goto(-20, 270)
         self.display_score()
 
-    def update_score(self):
+    def increase_score(self):
         self.score += 1
         self.display_score()
 
-    def display_score(self):
+    def write_to_board(self, text):
         self.clear()
+        self.write(text, False, "center", ("fira-sans", 18, "normal"))
+
+    def display_score(self):
         score_string = f"Score is: {self.score}"
-        self.write(score_string, False, "center", ("fira-sans", 10, "normal"))
+        self.write_to_board(text=score_string)
+
+    def display_game_over(self):
+        self.write_to_board("Game over!")

@@ -29,6 +29,7 @@ is_game_on = True
 def is_game_over():
     snake_head = snake.head
     if snake_head.xcor() >= 290 or snake_head.ycor() >= 290:
+        score.display_game_over()
         print("Game over")
         return True
     return False
@@ -39,7 +40,7 @@ while not is_game_over():
     screen.update()
     snake.move()
     if snake.head.distance(food) < 15:
-        score.update_score()
+        score.increase_score()
         food.refresh()
 
 screen.exitonclick()
