@@ -21,6 +21,8 @@ class Snake:
         self.snake_body = []
         self.initialise_snake_body()
         self.head = self.snake_body[0]
+        self.head.color("red")
+        self.head.shape("circle")
 
     def move(self):
         for part_num in range(len(self.snake_body) - 1, 0, -1):
